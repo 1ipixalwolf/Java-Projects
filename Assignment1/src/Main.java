@@ -1,7 +1,10 @@
 public class Main {
     public static void main(String[] args) {
+        // Create list object
         Node n = new Node();
         Node.DoubleNode dll = n.new DoubleNode();
+        
+        // Create a list with the given elements
         dll.addLast('C');
         dll.addLast('O');
         dll.addLast('M');
@@ -10,7 +13,25 @@ public class Main {
         dll.addLast('T');
         dll.addLast('E');
 
+        // 1. Print list
         dll.printList();
+
+        // 2. Insert M at start of list and print the result
+        dll.addFirst('M');
+        dll.printList();
+
+        // 3. Insert R at the end
+        dll.addLast('R');
+        dll.printList();
+
+        // 4. Remove the first item from the list
+        dll.removeFirst();
+        dll.printList();
+        
+        // 5. Remove the last item from the list
+        dll.removeLast();
+        dll.printList();
+
     }
 
     /*

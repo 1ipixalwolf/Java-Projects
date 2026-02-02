@@ -13,6 +13,9 @@ public class Node {
         next = null;
         prior = null;
     }
+    public Node(char data, Node next){
+        prior = null;
+    }
     
     // Getters and setters
     public char getData() {
@@ -43,7 +46,7 @@ public class Node {
         private int length;
 
         public DoubleNode() {
-            first = new Node(data, next, prior);
+            first = new Node(data, next);
             last = new Node(data, next, first);
             first.setNext(last);
         }
@@ -53,16 +56,10 @@ public class Node {
         }
 
         public char one(){
-            if(empty()){
-                return '0';
-            }
             return first.getNext().getData();
         }
 
         public char end(){
-            if(empty()){
-                return '0';
-            }
             return last.getPrior().getData();
         }
 
@@ -70,9 +67,15 @@ public class Node {
             addBetween(data, first, first.getNext());
         }
         public void addLast(char data){
-            addBetween(data, last.getPrior(), last);
+            addBetween(data, last, last.getPrior());
         }
-
+        /*public void addBef(char data, Node n){
+            Node nw = new Node(data, n);
+            nw.set
+        }
+        public void addAft(){
+            Node
+        }*/
         public void addBetween(char data, Node aft, Node bef){
             Node newest = new Node(data, aft, bef);
             bef.setNext(newest);
@@ -81,17 +84,12 @@ public class Node {
         }
 
         public char removeFirst(){
-            if(empty()){
-                return '0';
-            }
             return remove(first.getNext());
         }
         public char removeLast(){
-            if(empty()){
-                return '0';
-            }
             return remove(last.getPrior());
         }
+
         public char remove(Node x){
             Node bef = x.getPrior();
             Node aft = x.getNext();
@@ -120,10 +118,7 @@ public class Node {
     }
 
     /*
-        Implement a nested class DoubleNode for building doubly-linked lists, where each node contains
-        a reference to the item preceding it and the item following it in the list (null if there is no such
-        item). 
-        Then implement methods for the following tasks:
+        implement methods for the following tasks:
         • Print the contents of the list
         • Insert at the beginning
         • Insert at the end
