@@ -32,23 +32,12 @@ public class Main {
         dll.removeLast();
         dll.printList();
 
+        // 6. Add M before P
+        dll.addBef('M', 'P');
+        dll.printList();
     }
 
     /*
-    test each of these cases and print the list after each test and verify the correctness of the code.
-    Examples:
-    Suppose the link list contains the following elements:
-    C-> O -> M -> P -> U -> T -> E
-    1. Print the contents of the list:
-    C-> O -> M -> P -> U -> T -> E
-    2. Insert M at the beginning of the list:
-    M -> C-> O -> M -> P -> U -> T -> E
-    3. Insert R at the end:
-    M -> C-> O -> M -> P -> U -> T -> E -> R
-    4. Remove from the beginning:
-    C-> O -> M -> P -> U -> T -> E -> R
-    5. Remove from the end:
-    C-> O -> M -> P -> U -> T -> E
     6. Insert M before P:
     C-> O -> M -> M -> P -> U -> T -> E
     7. Insert H before M:

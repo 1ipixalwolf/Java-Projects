@@ -10,11 +10,13 @@ public class Node {
     }
 
     public Node() {
+        data = '\0';
         next = null;
         prior = null;
     }
     public Node(char data, Node next){
         prior = null;
+        next = null;
     }
     
     // Getters and setters
@@ -31,7 +33,6 @@ public class Node {
     public void setNext(Node next) {
         this.next = next;
     }
-
     public Node getPrior() {
         return prior;
     }
@@ -64,18 +65,35 @@ public class Node {
         }
 
         public void addFirst(char data){
-            addBetween(data, first, first.getNext());
+            addBetween(data, first.getNext(), first);
         }
         public void addLast(char data){
             addBetween(data, last, last.getPrior());
         }
-        /*public void addBef(char data, Node n){
-            Node nw = new Node(data, n);
-            nw.set
+        public void addBef(char data, char find){
+            Node start = first.getNext();
+            while (start != last) {
+                if(start.getData() == find){
+                    Node nw = new Node();
+                    nw.setData(data);
+                    nw.setNext(start);
+                    nw.setPrior(start.getPrior());
+                }
+                start = start.getNext();  
+            }
         }
-        public void addAft(){
-            Node
-        }*/
+        public void addAft(char data, char find){
+            Node start = first.getNext();
+            while (start != last) {
+                if(start.getData() == find){
+                    Node nw = new Node();
+                    nw.setData(data);
+                    nw.setNext(start.getNext());
+                    nw.setPrior(start);
+                }
+                start = start.getNext();    
+            }
+        }
         public void addBetween(char data, Node aft, Node bef){
             Node newest = new Node(data, aft, bef);
             bef.setNext(newest);
@@ -83,6 +101,7 @@ public class Node {
             length++;
         }
 
+        // Methods to remove first and last elements
         public char removeFirst(){
             return remove(first.getNext());
         }
@@ -90,6 +109,7 @@ public class Node {
             return remove(last.getPrior());
         }
 
+        // Remove a given node
         public char remove(Node x){
             Node bef = x.getPrior();
             Node aft = x.getNext();
@@ -102,6 +122,7 @@ public class Node {
             return x.getData();
         }
 
+        // Print the list
         public void printList() {
             if(empty()){
                 System.out.println("List is empty");
